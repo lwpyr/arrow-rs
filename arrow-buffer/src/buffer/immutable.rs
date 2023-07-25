@@ -328,6 +328,7 @@ impl<T: AsRef<[u8]>> From<T> for Buffer {
         // allocate aligned memory buffer
         let slice = p.as_ref();
         let len = slice.len();
+        std::println!("allocate {}\n", len);
         let mut buffer = MutableBuffer::new(len);
         buffer.extend_from_slice(slice);
         buffer.into()
