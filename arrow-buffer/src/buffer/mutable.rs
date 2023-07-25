@@ -661,6 +661,7 @@ impl std::ops::DerefMut for MutableBuffer {
 impl Drop for MutableBuffer {
     fn drop(&mut self) {
         if self.layout.size() != 0 {
+            std::println!("dealloc {}", self.layout.size());
             // Safety: data was allocated with standard allocator with given layout
             unsafe { std::alloc::dealloc(self.data.as_ptr() as _, self.layout) };
         }

@@ -329,6 +329,7 @@ impl<T: AsRef<[u8]>> From<T> for Buffer {
         let slice = p.as_ref();
         let len = slice.len();
         let mut buffer = MutableBuffer::new(len);
+        std::println!("allocate {}, {:p}", len, buffer.as_ptr());
         buffer.extend_from_slice(slice);
         buffer.into()
     }

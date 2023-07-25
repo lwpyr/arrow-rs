@@ -114,6 +114,7 @@ unsafe impl Sync for Bytes where Deallocation: Sync {}
 impl Drop for Bytes {
     #[inline]
     fn drop(&mut self) {
+        std::println!("deallocate {:p}", self.ptr.as_ptr());
         match &self.deallocation {
             Deallocation::Standard(layout) => match layout.size() {
                 0 => {} // Nothing to do

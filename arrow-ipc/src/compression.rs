@@ -105,6 +105,7 @@ impl CompressionCodec {
             input.slice(LENGTH_OF_PREFIX_DATA as usize)
         } else {
             // decompress data using the codec
+            std::println!("origin {}", decompressed_length);
             let mut uncompressed_buffer =
                 Vec::with_capacity(decompressed_length as usize);
             let input_data = &input[(LENGTH_OF_PREFIX_DATA as usize)..];
